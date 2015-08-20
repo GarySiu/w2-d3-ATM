@@ -27,7 +27,12 @@ atm.withdraw1 = function() {
     return;
   }
   var balance = parseInt($('#balance1').text().split('$')[1]);
-  balance = balance - parseInt($('#amount1').val());
+  if(balance - parseInt($('#amount1').val()) < 0) {
+  $('#amount1').val('');
+    return;
+  } else {
+    balance = balance - parseInt($('#amount1').val());
+  }
   $('#balance1').text('$'+balance);
   $('#amount1').val('');
 }
@@ -37,7 +42,12 @@ atm.withdraw2 = function() {
     return;
   }
   var balance = parseInt($('#balance2').text().split('$')[1]);
-  balance = balance - parseInt($('#amount2').val());
+  if(balance - parseInt($('#amount2').val()) < 0) {
+  $('#amount2').val('');
+    return;
+  } else {
+    balance = balance - parseInt($('#amount2').val());
+  }
   $('#balance2').text('$'+balance);
   $('#amount2').val('');
 }
