@@ -27,9 +27,17 @@ atm.withdraw1 = function() {
     return;
   }
   var balance = parseInt($('#balance1').text().split('$')[1]);
+  var balance2 = parseInt($('#balance2').text().split('$')[1]);
   if(balance - parseInt($('#amount1').val()) < 0) {
+    if( (balance - parseInt($('#amount1').val())) + balance2 >= 0) {
+      $('#balance1').text('$0');
+      balance = ((balance - parseInt($('#amount1').val())) + balance2);
+      $('#balance2').text('$'+balance);
+      $('#amount1').val('');
+      return;
+    }
   $('#amount1').val('');
-    return;
+  return;
   } else {
     balance = balance - parseInt($('#amount1').val());
   }
